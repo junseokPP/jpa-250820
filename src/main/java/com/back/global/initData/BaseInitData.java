@@ -1,17 +1,19 @@
 package com.back.global.initData;
 
 import com.back.domain.post.entity.Post;
-import com.back.domain.post.repository.PostRepository;
+import com.back.domain.post.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Optional;
+
 @Configuration
 public class BaseInitData {
 
     @Autowired
-    private PostRepository postRepository;
+    public PostService postService;
 
     @Bean
     ApplicationRunner initDataRunner(){
@@ -23,19 +25,17 @@ public class BaseInitData {
 
     void work1(){
 
-        if(postRepository.count()>0){
+        if(postService.getTotalCount()>0){
             return;
         }
 
-        Post post1 = new Post("제목1","내용1");
-        postRepository.save(post1);
-
-        Post post2 = new Post("제목2","내용2");
-        postRepository.save(post2);
-
+        postService.write("제목1","내용1");
+        postService.write("제목2","내용2");
     }
+
     void work2(){
-        postRepository.findById(1);
+
+        Optional<Post> opPost = postService.getPost(1);
     }
 
 }
