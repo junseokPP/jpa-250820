@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Entity
@@ -19,8 +21,13 @@ public class Post {
 
     @Column(columnDefinition = "TEXT")
     private String content;
+    private LocalDateTime createDate;
+    private LocalDateTime modifyDate;
 
     public Post(String title, String content) {
+        this.createDate= LocalDateTime.now();
+        this.modifyDate = LocalDateTime.now();
+
         this.title = title;
         this.content = content;
     }
