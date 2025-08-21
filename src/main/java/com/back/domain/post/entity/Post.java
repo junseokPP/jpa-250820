@@ -17,4 +17,11 @@ public class Post {
 
     @Column(columnDefinition = "TEXT")
     private String content;
+
+    public Post() {}
+
+    public Post(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }
