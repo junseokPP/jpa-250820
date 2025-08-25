@@ -11,7 +11,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PostService {
 
-    private PostRepository postRepository;
+    private final PostRepository postRepository;
 
     public void write(String title, String content) {
 
@@ -25,5 +25,9 @@ public class PostService {
 
     public long getTotalCount() {
         return postRepository.count();
+    }
+
+    public void delete(Post post) {
+        postRepository.delete(post);
     }
 }
