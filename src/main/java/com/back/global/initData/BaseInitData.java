@@ -27,14 +27,15 @@ public class BaseInitData {
         return args -> {
             self.work1();
             self.work2();
-            new Thread(()->{
-                try {
-                    self.work3();
-                }catch (Exception ex){
-                    ex.printStackTrace();
-                }
-
-            }).start();
+//            new Thread(()->{
+//                try {
+//                    self.work3();
+//                }catch (Exception ex){
+//                    ex.printStackTrace();
+//                }
+//
+//            }).start();
+            self.work4();
         };
     }
 
@@ -63,10 +64,12 @@ public class BaseInitData {
 
         if(true) throw new RuntimeException("테스트 예외 발생");
 
-
-
-
         postService.delete(post2);
+    }
+
+    void work4(){
+        Post post1 = postService.getPost(1).get();
+        postService.modify(post1,"제목1-수정","내용1-수정");
     }
 
 }
