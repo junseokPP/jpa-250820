@@ -24,7 +24,6 @@ public class PostService {
         post.setContent(content);
 
 
-        postRepository.save(post);
     }
 
     public Optional<Post> getPost(int i) {
