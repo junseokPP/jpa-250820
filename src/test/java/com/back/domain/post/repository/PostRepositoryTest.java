@@ -41,5 +41,12 @@ public class PostRepositoryTest {
     }
 
 
+    @Test
+    @DisplayName("글 개수 조회")
+    void t3(){
+        long cnt = postRepository.count();
+
+        assertThat(cnt).isEqualTo(2L);
+    }
 
 }
