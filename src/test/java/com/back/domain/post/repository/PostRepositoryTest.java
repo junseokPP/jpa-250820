@@ -1,10 +1,12 @@
 package com.back.domain.post.repository;
 
 import com.back.domain.post.entity.Post;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -26,6 +28,8 @@ public class PostRepositoryTest {
 
     @Test
     @DisplayName("글 생성")
+    @Transactional
+    @Rollback
     void t2(){
 
         Post newPost = new Post("new 제목","new 내용");
