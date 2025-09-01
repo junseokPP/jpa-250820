@@ -1,20 +1,24 @@
 package com.back.domain.post.repository;
 
-import com.back.domain.post.entity.Post;
-import jakarta.transaction.Transactional;
+import com.back.domain.post.post.entity.Post;
+import com.back.domain.post.post.repository.PostRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
+@Transactional
+@ActiveProfiles("test")
 public class PostRepositoryTest {
 
     @Autowired
-    private  PostRepository postRepository;
+    private PostRepository postRepository;
 
     @Test
     @DisplayName("2번 글 조회")

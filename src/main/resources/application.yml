@@ -4,14 +4,9 @@ server:
 spring:
   application:
     name: demo
-
-  datasource:
-    url: jdbc:h2:./db_dev;MODE=MySQL
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
-
-
+  output:
+    ansi:
+      enabled: always
   jpa:
     hibernate:
       ddl-auto: update
@@ -26,3 +21,4 @@ logging:
   level:
     org.hibernate.orm.jdbc.bind: trace
     org.hibernate.orm.jdbc.extract: trace
+    org.springframework.transaction.interceptor: trace  # 트랜잭션 로그
